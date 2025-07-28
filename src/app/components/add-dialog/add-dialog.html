@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Add Entry</h1>
+<mat-dialog-content class="mat-typography mat-dialog-content">
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Task Content</mat-label>
+      <input
+        matInput
+        formControlName="content"
+        placeholder="Enter task description"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [min]="minDate"
+        formControlName="endDate"
+        readonly
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    class="save-button"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+  <button
+    mat-raised-button
+    class="cancel-button"
+    (click)="dialogRef.close()"
+  >
+    Cancel
+  </button>
+</mat-dialog-actions>

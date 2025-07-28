@@ -1,0 +1,11 @@
+.add-button {
+  position: fixed;
+  bottom: calc(var(--header-footer-height) + var(--content-padding));
+  right: var(--content-padding);
+  z-index: 100;
+  background-color: var(--bg-color) !important;
+}
+
+.add-button mat-icon {
+  color: var(--font-on-bg);
+}

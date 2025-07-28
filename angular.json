@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-app": {
+    "smaran": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -14,19 +14,20 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/custom-theme.scss", "src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -54,12 +55,22 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "liveReload": true,
+            "watch": true,
+            "poll": 1000,
+            "host": "localhost",
+            "port": 4200
+          },
           "configurations": {
             "production": {
-              "buildTarget": "test-app:build:production"
+              "buildTarget": "smaran:build:production"
             },
             "development": {
-              "buildTarget": "test-app:build:development"
+              "buildTarget": "smaran:build:development",
+              "liveReload": true,
+              "watch": true,
+              "poll": 1000
             }
           },
           "defaultConfiguration": "development"
@@ -70,20 +81,19 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           }
         }
       }

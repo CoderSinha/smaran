@@ -1,0 +1,11 @@
+<mat-chip-listbox>
+  @for (category of categories(); track category.value) {
+    <mat-chip-option
+      [value]="category.value"
+      [selected]="selectedCategory() === category.value"
+      selectable="true"
+      (selectionChange)="onSelectionChange($event)"
+      >{{ category.label }}</mat-chip-option
+    >
+  }
+</mat-chip-listbox>

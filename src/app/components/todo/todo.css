@@ -1,0 +1,83 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-margin-right);
+  padding: var(--header-footer-padding) var(--content-padding);
+  background-color: var(--font-on-bg);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--logo-margin-right);
+  box-shadow: var(--shadow-default);
+  transition: box-shadow var(--transition-duration) ease;
+}
+
+.todo-item:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.todo-checkbox {
+  flex: 1;
+}
+
+/* Transform checkbox to look like radio button */
+.todo-checkbox ::ng-deep .mdc-checkbox__background {
+  border-radius: var(--radio-border-radius) !important;
+}
+
+.todo-checkbox ::ng-deep .mdc-checkbox__checkmark {
+  display: none !important;
+}
+
+.todo-checkbox ::ng-deep .mdc-checkbox__mixedmark {
+  display: none !important;
+}
+
+/* Create the radio dot when checked with proper gap */
+.todo-checkbox ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  background-color: transparent !important;
+}
+
+.todo-checkbox ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background::after {
+  content: '';
+  position: absolute;
+  top: var(--center-position);
+  left: var(--center-position);
+  transform: translate(-50%, -50%);
+  width: var(--radio-inner-dot-size);
+  height: var(--radio-inner-dot-size);
+  background-color: var(--bg-color);
+  border-radius: var(--radio-border-radius);
+}
+
+.todo-icon {
+  display: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: var(--icon-inactive-opacity);
+  transition: all var(--transition-duration) ease;
+}
+
+.todo-item:hover .todo-icon {
+  display: block;
+}
+
+.todo-icon:hover {
+  color: var(--icon-danger-color);
+}
+
+.todo-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-gap);
+}
+
+.todo-text {
+  font-size: inherit;
+  line-height: var(--tight-line-height);
+}
+
+.todo-date {
+  font-size: var(--small-font-scale);
+  color: var(--icon-inactive-opacity);
+  opacity: var(--icon-inactive-opacity);
+}

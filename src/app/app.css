@@ -1,0 +1,21 @@
+:host {
+  box-sizing: border-box;
+  display: block;
+  height: var(--full-viewport-height);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: var(--full-viewport-height);
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: var(--header-footer-height);
+  margin-bottom: var(--header-footer-height);
+  overflow-y: auto;
+  padding: var(--content-padding);
+  box-sizing: border-box;
+}

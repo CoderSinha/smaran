@@ -1,0 +1,31 @@
+<div class="todo-item">
+  <mat-checkbox
+    class="todo-checkbox"
+    [id]="item().id.toString()"
+    [checked]="item().isChecked"
+    (change)="onCheckboxClicked($event)"
+  >
+    <div class="todo-content">
+      <div class="todo-text">{{ item().content }}</div>
+      <div class="todo-date">
+        @if (item().category === 'active') {
+          Complete by: {{ item().endDate | date: 'dd/MM/yyyy' }}
+        } @else {
+          Completed on: {{ item().completedDate | date: 'dd/MM/yyyy' }}
+        }
+      </div>
+    </div>
+  </mat-checkbox>
+  @if (item().category === 'active') {
+    <mat-icon
+      class="todo-icon"
+      fontIcon="edit"
+      (click)="openDialog()"
+    ></mat-icon>
+  }
+  <mat-icon
+    class="todo-icon"
+    fontIcon="delete"
+    (click)="onCheckBoxDeleted()"
+  ></mat-icon>
+</div>
