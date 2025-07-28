@@ -1,59 +1,44 @@
-# TestApp
+# Smaran
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+Smaran is a modern todo application that demonstrates the power of Angular's latest features combined with Material Design. Built as a showcase of contemporary web development practices, this app provides an intuitive interface for task management while highlighting cutting-edge Angular capabilities.
 
-## Development server
+## About the Application
 
-To start a local development server, run:
+This todo app goes beyond basic task management by implementing Angular's newest features and best practices. It serves as both a functional productivity tool and a demonstration of modern Angular development patterns. The application features a clean, responsive interface that adapts seamlessly across devices, making task organization effortless whether you're on desktop or mobile.
 
-```bash
-ng serve
-```
+The app emphasizes user experience with smooth animations, intuitive interactions, and a thoughtfully designed Material Design interface. Each component is built with reusability and maintainability in mind, showcasing how modern Angular applications should be structured.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Key Features
 
-## Code scaffolding
+- **Complete Task Lifecycle** - Create new todos with due dates, edit existing tasks, and delete unwanted items
+- **Status Management** - Mark tasks as complete or reactivate them with a simple checkbox interaction
+- **Intelligent Filtering** - Switch between active and completed task views with dedicated category filters
+- **Smart Sorting** - Active tasks sorted by due date priority, completed tasks by completion time
+- **Date Validation** - Built-in date picker with validation preventing past due dates
+- **Reactive State** - Real-time UI updates using Angular's modern signals API for optimal performance
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Tech Stack & Modern Features
 
-```bash
-ng generate component component-name
-```
+- **Angular 20** - Core framework with signals, computed, and inject APIs
+- **Angular Material** - UI components (Dialog, Button, Checkbox, Chips, Form Fields, Date Picker)
+- **Angular Reactive Forms** - Form validation and data binding with FormBuilder
+- **TypeScript** - Type-safe development with interfaces and enums
+- **SCSS** - Custom styling and Material Design theming
+- **Standalone Components** - Modern Angular architecture without NgModules
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+This project showcases Angular's latest **signals** feature for reactive state management, using `signal()`, `computed()`, and `update()` methods for efficient component state handling without traditional observables.
 
-```bash
-ng generate --help
-```
+## License
 
-## Building
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-To build the project run:
+## Author
 
-```bash
-ng build
-```
+**Abhinav Sinha**
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Email: abhi.sinha1302@gmail.com
+- GitHub: [@CoderSinha](https://github.com/CoderSinha)
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Built with ❤️ using Angular and Material Design
