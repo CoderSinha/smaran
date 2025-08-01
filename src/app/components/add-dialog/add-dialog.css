@@ -5,14 +5,15 @@
 
 .cancel-button {
   background-color: transparent !important;
-  color: var(--bg-color) !important;
-  border: var(--border-width) solid var(--bg-color) !important;
+  color: var(--text-primary) !important;
+  border: var(--border-width) solid var(--border-color) !important;
   transition: all var(--transition-duration) ease !important;
 }
 
 .cancel-button:hover {
-  background-color: var(--bg-color) !important;
-  color: var(--font-on-bg) !important;
+  background-color: var(--todo-color-hover-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
 }
 
 mat-dialog-content {
@@ -21,8 +22,8 @@ mat-dialog-content {
   padding: var(--content-padding);
 
   /* Take screen width with appropriate margins using central values */
-  width: calc(100vw - calc(var(--content-padding) * 4));
-  max-width: 500px;
+  width: calc(100vw - calc(var(--content-padding) * var(--dialog-content-multiplier)));
+  max-width: var(--dialog-max-width);
 }
 
 mat-dialog-content form {
@@ -32,7 +33,7 @@ mat-dialog-content form {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 200px;
+  min-height: var(--dialog-min-height);
 }
 
 mat-dialog-content mat-form-field {

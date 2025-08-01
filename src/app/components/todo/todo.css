@@ -4,7 +4,8 @@
   align-items: center;
   gap: var(--logo-margin-right);
   padding: var(--header-footer-padding) var(--content-padding);
-  background-color: var(--font-on-bg);
+  background-color: var(--todo-item-bg);
+  color: var(--text-primary);
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
   margin-bottom: var(--logo-margin-right);
@@ -54,7 +55,7 @@
 }
 
 .todo-checkbox ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
-  background-color: transparent !important;
+  background-color: var(--font-on-bg) !important;
 }
 
 .todo-checkbox ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background::after {
@@ -85,7 +86,7 @@
 
 .todo-date {
   font-size: var(--small-font-scale);
-  color: var(--icon-inactive-opacity);
+  color: var(--text-secondary);
   opacity: var(--icon-inactive-opacity);
   cursor: pointer;
   padding: var(--todo-spacing-sm);

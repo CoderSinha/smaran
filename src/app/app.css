@@ -2,6 +2,8 @@
   box-sizing: border-box;
   display: block;
   height: var(--full-viewport-height);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .app-container {
@@ -9,6 +11,8 @@
   flex-direction: column;
   height: var(--full-viewport-height);
   overflow: hidden;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .main-content {
@@ -18,4 +22,6 @@
   overflow-y: auto;
   padding: var(--content-padding);
   box-sizing: border-box;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
 }

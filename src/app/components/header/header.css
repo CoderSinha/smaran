@@ -3,6 +3,7 @@
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: var(--full-viewport-width);
   background-color: var(--bg-color);
   margin: 0;
@@ -16,12 +17,79 @@
   z-index: var(--fixed-z-index);
   height: var(--header-footer-height);
 }
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 .logo {
   height: var(--logo-height);
   margin-right: var(--logo-margin-right);
   margin-left: var(--logo-margin-left);
 }
+
 .title {
   font-family: var(--header-title-font);
   color: var(--font-on-bg);
+}
+
+.theme-toggle-switch {
+  position: fixed;
+  top: var(--theme-toggle-top);
+  right: var(--theme-toggle-right);
+  display: inline-block;
+  width: var(--theme-toggle-width);
+  height: var(--theme-toggle-height);
+  cursor: pointer;
+  z-index: calc(var(--fixed-z-index) + 1);
+}
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, var(--theme-toggle-bg-opacity-default));
+  border: var(--theme-toggle-border-width) solid var(--font-on-bg);
+  transition: all var(--theme-toggle-transition) ease;
+  border-radius: var(--theme-toggle-border-radius);
+  display: flex;
+  align-items: center;
+}
+
+.slider-icon {
+  position: absolute;
+  font-size: var(--theme-toggle-icon-size);
+  color: var(--font-on-bg);
+  background-color: var(--bg-color);
+  border-radius: var(--radio-border-radius);
+  width: var(--theme-toggle-icon-width);
+  height: var(--theme-toggle-icon-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: var(--theme-toggle-icon-left);
+  transition: all var(--theme-toggle-transition) ease;
+  box-shadow: var(--theme-toggle-shadow);
+}
+
+input:checked + .slider .slider-icon {
+  transform: translateX(var(--theme-toggle-icon-translate));
+}
+
+.theme-toggle-switch:hover .slider {
+  background-color: rgba(255, 255, 255, var(--theme-toggle-bg-opacity-hover));
 }

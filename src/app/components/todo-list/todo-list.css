@@ -1,8 +1,16 @@
+.todo-list-container {
+  position: relative;
+}
+
+.chips-button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--chips-button-margin);
+}
+
 .add-button {
-  position: fixed;
-  bottom: calc(var(--header-footer-height) + var(--content-padding));
-  right: var(--content-padding);
-  z-index: 100;
+  z-index: var(--add-button-z-index);
   background-color: var(--bg-color) !important;
 }
 
