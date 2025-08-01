@@ -4,28 +4,79 @@
     [id]="item().id.toString()"
     [checked]="item().isChecked"
     (change)="onCheckboxClicked($event)"
+  ></mat-checkbox>
+
+  <div
+    class="todo-content"
+    [formGroup]="form"
   >
-    <div class="todo-content">
-      <div class="todo-text">{{ item().content }}</div>
-      <div class="todo-date">
+    @if (isInEditMode()) {
+      <div class="edit-fields">
+        <input
+          matInput
+          class="todo-text-input"
+          formControlName="content"
+          (keydown)="onKeyDown($event)"
+          (blur)="saveEdit()"
+          placeholder="Task description"
+          #editInput
+        />
+        <input
+          matInput
+          class="todo-date-input"
+          formControlName="endDate"
+          (input)="onDateInput($event)"
+          (keydown)="onKeyDown($event)"
+          (blur)="onDateBlur()"
+          placeholder="DD/MM/YYYY"
+        />
+      </div>
+      @if (form.get('endDate')?.errors) {
+        <div class="error-message">
+          @if (form.get('endDate')?.errors?.['invalidFormat']) {
+            Please use DD/MM/YYYY format
+          }
+          @if (form.get('endDate')?.errors?.['pastDate']) {
+            Date must be today or in the future
+          }
+        </div>
+      }
+    } @else {
+      <div
+        class="todo-text"
+        (click)="startInlineEditing()"
+      >
+        {{ item().content }}
+      </div>
+      <div
+        class="todo-date"
+        (click)="startInlineEditing()"
+      >
         @if (item().category === 'active') {
           Complete by: {{ item().endDate | date: 'dd/MM/yyyy' }}
         } @else {
           Completed on: {{ item().completedDate | date: 'dd/MM/yyyy' }}
         }
       </div>
-    </div>
-  </mat-checkbox>
-  @if (item().category === 'active') {
-    <mat-icon
-      class="todo-icon"
-      fontIcon="edit"
-      (click)="openDialog()"
-    ></mat-icon>
-  }
-  <mat-icon
-    class="todo-icon"
-    fontIcon="delete"
-    (click)="onCheckBoxDeleted()"
-  ></mat-icon>
+    }
+  </div>
+
+  <div class="todo-actions">
+    @if (!isInEditMode()) {
+      @if (item().category === 'active') {
+        <mat-icon
+          class="todo-icon edit-icon"
+          fontIcon="edit"
+          (click)="openDialog()"
+          title="Edit"
+        ></mat-icon>
+      }
+      <mat-icon
+        class="todo-icon delete-icon"
+        fontIcon="delete"
+        (click)="onCheckBoxDeleted()"
+        title="Delete"
+      ></mat-icon>
+    }
+  </div>
 </div>
