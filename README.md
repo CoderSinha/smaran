@@ -11,11 +11,13 @@ The app emphasizes user experience with smooth animations, intuitive interaction
 ## Key Features
 
 - **Complete Task Lifecycle** - Create new todos with due dates, edit existing tasks, and delete unwanted items
+- **Inline Editing** - Click any task to edit content and due dates directly in place
 - **Status Management** - Mark tasks as complete or reactivate them with a simple checkbox interaction
 - **Intelligent Filtering** - Switch between active and completed task views with dedicated category filters
 - **Smart Sorting** - Active tasks sorted by due date priority, completed tasks by completion time
 - **Date Validation** - Built-in date picker with validation preventing past due dates
 - **Reactive State** - Real-time UI updates using Angular's modern signals API for optimal performance
+- **Dynamic Theme System** - Seamless light/dark mode switching with system preference detection
 
 ## Tech Stack & Modern Features
 

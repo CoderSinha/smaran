@@ -1,19 +1,23 @@
-<app-chips
-  [selectedCategory]="category()"
-  (chipSelectionChange)="onCategoryChange($event)"
-></app-chips>
-@for (item of filtertedList(); track item.content) {
-  <app-todo
-    [item]="item"
-    (onClicked)="onCheckboxClicked($event)"
-    (onDeleted)="onCheckBoxDeleted($event)"
-    (onEdited)="onContentEdited($event)"
-  ></app-todo>
-}
-<button
-  matFab
-  class="add-button"
-  (click)="openDialog()"
->
-  <mat-icon>add</mat-icon>
-</button>
+<div class="todo-list-container">
+  <div class="chips-button-row">
+    <app-chips
+      [selectedCategory]="category()"
+      (chipSelectionChange)="onCategoryChange($event)"
+    ></app-chips>
+    <button
+      matFab
+      class="add-button"
+      (click)="openDialog()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  @for (item of filtertedList(); track item.content) {
+    <app-todo
+      [item]="item"
+      (onClicked)="onCheckboxClicked($event)"
+      (onDeleted)="onCheckBoxDeleted($event)"
+      (onEdited)="onContentEdited($event)"
+    ></app-todo>
+  }
+</div>

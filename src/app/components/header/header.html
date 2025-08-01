@@ -1,8 +1,24 @@
 <div class="header-container">
-  <img
-    src="assets/logo.png"
-    alt="Logo"
-    class="logo"
-  />
-  <h2 class="title">{{ title() }}</h2>
+  <div class="header-left">
+    <img
+      src="assets/logo.png"
+      alt="Logo"
+      class="logo"
+    />
+    <h2 class="title">{{ title() }}</h2>
+  </div>
+  <div class="header-right">
+    <label class="theme-toggle-switch">
+      <input
+        type="checkbox"
+        [checked]="themeService.isDarkMode()"
+        (change)="toggleTheme()"
+      />
+      <span class="slider">
+        <mat-icon class="slider-icon">{{
+          themeService.isDarkMode() ? 'sunny' : 'mode_night'
+        }}</mat-icon>
+      </span>
+    </label>
+  </div>
 </div>
