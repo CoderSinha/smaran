@@ -37,6 +37,15 @@
   --transition-duration: 0.2s;
   --shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  /* Todo component specific values - only used variables */
+  --todo-spacing-sm: 4px;
+  --todo-spacing-md: 8px;
+  --todo-date-input-width: 120px;
+  --todo-color-error: #f44336;
+  --todo-color-primary: #2196f3;
+  --todo-color-hover-bg: rgba(0, 0, 0, 0.04);
+  --todo-color-placeholder: rgba(0, 0, 0, 0.4);
 }
 
 body {

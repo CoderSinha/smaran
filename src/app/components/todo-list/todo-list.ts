@@ -1,5 +1,4 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Todo } from '../todo/todo';
 import { List, Category } from '../../../models/models';
 import { Chips } from '../chips/chips';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,25 +6,31 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDialog } from '../add-dialog/add-dialog';
 import { ListData } from '../../service/list-data';
+import { Todo } from '../todo/todo';
+import { DIALOG_CONFIG } from '../../../config/dialog.config';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.css',
-  imports: [Todo, Chips, MatButtonModule, MatIconModule],
+  imports: [Chips, MatButtonModule, MatIconModule, Todo],
 })
 export class TodoList {
+  // ===== SERVICES =====
   private listDataService = inject(ListData);
-  list = this.listDataService.getList();
+  private dialog = inject(MatDialog);
+
+  // ===== STATE =====
   category = signal<Category>(Category.ACTIVE);
+  list = this.listDataService.getList();
   filtertedList = computed(() =>
     this.list()
       .filter((item) => item.category === this.category())
       .sort(this.sortFn),
   );
-  dialog = inject(MatDialog);
 
-  onCategoryChange(category: Category) {
+  // ===== EVENT HANDLERS =====
+  onCategoryChange(category: Category): void {
     this.category.set(category);
   }
 
@@ -56,11 +61,11 @@ export class TodoList {
     );
   }
 
+  // ===== ACTIONS =====
   openDialog(): void {
     const maxId = this.listDataService.getMaxId();
     const dialogRef = this.dialog.open(AddDialog, {
-      width: '500px',
-      height: '350px',
+      ...DIALOG_CONFIG.ADD_DIALOG,
       data: { mode: 'create', id: maxId + 1 },
     });
 
@@ -71,6 +76,7 @@ export class TodoList {
     });
   }
 
+  // ===== PRIVATE HELPERS =====
   private sortFn = (a: List, b: List): number => {
     if (a.isChecked !== b.isChecked) {
       return a.isChecked ? -1 : 1;

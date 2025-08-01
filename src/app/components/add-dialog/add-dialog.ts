@@ -36,20 +36,23 @@ import { Category } from '../../../models/category.type';
   styleUrl: './add-dialog.css',
 })
 export class AddDialog {
-  data = inject(MAT_DIALOG_DATA);
+  // ===== SERVICES =====
   dialogRef = inject(MatDialogRef<AddDialog>);
-  formBuilder = inject(FormBuilder);
+  private formBuilder = inject(FormBuilder);
+
+  // ===== PROPERTIES =====
+  data = inject(MAT_DIALOG_DATA);
   isEditMode = this.data.mode === 'edit';
+  minDate = new Date(); // Set minimum date to today (no past dates allowed)
 
-  // Set minimum date to today (no past dates allowed)
-  minDate = new Date();
-
+  // ===== STATE =====
   form = this.formBuilder.group({
     content: [this.initialData('content'), Validators.required],
     endDate: [this.initialData('endDate'), Validators.required],
   });
 
-  onSave() {
+  // ===== ACTIONS =====
+  onSave(): void {
     if (this.form.valid) {
       // Convert to machine-workable ISO format
       const endDate = this.form.value.endDate;
@@ -69,6 +72,7 @@ export class AddDialog {
     }
   }
 
+  // ===== PRIVATE HELPERS =====
   private initialData(propertyName: string) {
     if (propertyName === 'content') {
       return this.isEditMode ? this.data.item.content : '';

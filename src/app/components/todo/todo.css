@@ -1,3 +1,4 @@
+/* ===== LAYOUT COMPONENTS ===== */
 .todo-item {
   display: flex;
   align-items: center;
@@ -16,10 +17,30 @@
 }
 
 .todo-checkbox {
-  flex: 1;
+  flex-shrink: 0;
 }
 
-/* Transform checkbox to look like radio button */
+.todo-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-gap);
+}
+
+.edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--todo-spacing-md);
+  width: 100%;
+}
+
+.todo-actions {
+  display: flex;
+  gap: var(--todo-spacing-md);
+  align-items: center;
+}
+
+/* ===== CHECKBOX STYLING (RADIO BUTTON APPEARANCE) ===== */
 .todo-checkbox ::ng-deep .mdc-checkbox__background {
   border-radius: var(--radio-border-radius) !important;
 }
@@ -32,7 +53,6 @@
   display: none !important;
 }
 
-/* Create the radio dot when checked with proper gap */
 .todo-checkbox ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
   background-color: transparent !important;
 }
@@ -49,6 +69,97 @@
   border-radius: var(--radio-border-radius);
 }
 
+/* ===== INTERACTIVE ELEMENTS ===== */
+.todo-text {
+  font-size: inherit;
+  line-height: var(--tight-line-height);
+  cursor: pointer;
+  padding: var(--todo-spacing-sm);
+  border-radius: var(--todo-spacing-sm);
+  transition: background-color var(--transition-duration) ease;
+}
+
+.todo-text:hover {
+  background-color: var(--todo-color-hover-bg);
+}
+
+.todo-date {
+  font-size: var(--small-font-scale);
+  color: var(--icon-inactive-opacity);
+  opacity: var(--icon-inactive-opacity);
+  cursor: pointer;
+  padding: var(--todo-spacing-sm);
+  border-radius: var(--todo-spacing-sm);
+  transition: background-color var(--transition-duration) ease;
+}
+
+.todo-date:hover {
+  background-color: var(--todo-color-hover-bg);
+}
+
+/* ===== INPUT FIELDS (INVISIBLE/SEAMLESS) ===== */
+.todo-text-input {
+  font-size: inherit;
+  line-height: var(--tight-line-height);
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: var(--todo-spacing-sm);
+}
+
+.todo-text-input:focus {
+  background: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.todo-date-input {
+  font-size: var(--small-font-scale);
+  line-height: var(--tight-line-height);
+  width: var(--todo-date-input-width);
+  font-weight: normal;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: var(--todo-spacing-sm);
+}
+
+.todo-date-input:focus {
+  background: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.todo-date-input::placeholder {
+  color: var(--todo-color-placeholder);
+  font-size: var(--small-font-scale);
+}
+
+/* ===== STATES & FEEDBACK ===== */
+.error-message {
+  font-size: var(--small-font-scale);
+  color: var(--todo-color-error);
+  margin-top: var(--todo-spacing-sm);
+}
+
+/* ===== ICONS ===== */
 .todo-icon {
   display: none;
   cursor: pointer;
@@ -61,23 +172,10 @@
   display: block;
 }
 
-.todo-icon:hover {
-  color: var(--icon-danger-color);
+.edit-icon:hover {
+  color: var(--todo-color-primary) !important;
 }
 
-.todo-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--content-gap);
-}
-
-.todo-text {
-  font-size: inherit;
-  line-height: var(--tight-line-height);
-}
-
-.todo-date {
-  font-size: var(--small-font-scale);
-  color: var(--icon-inactive-opacity);
-  opacity: var(--icon-inactive-opacity);
+.delete-icon:hover {
+  color: var(--icon-danger-color) !important;
 }
