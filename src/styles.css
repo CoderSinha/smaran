@@ -92,6 +92,7 @@
   --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.5);
   --todo-color-hover-bg: rgba(255, 255, 255, 0.1);
   --todo-color-placeholder: rgba(241, 245, 249, 0.6);
+  --todo-color-error: #ef4444;
 }
 
 /* Smooth theme transitions */
@@ -235,6 +236,24 @@ body {
 
 .mat-mdc-chip-listbox {
   color: var(--text-primary) !important;
+}
+
+/* Chip checkmark/tick icon visibility improvements */
+.mat-mdc-chip-option.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark,
+.mat-mdc-chip.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark {
+  color: var(--font-on-bg) !important;
+  opacity: 1 !important;
+}
+
+.mat-mdc-chip-option.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark-svg,
+.mat-mdc-chip.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark-svg {
+  fill: var(--font-on-bg) !important;
+}
+
+.mat-mdc-chip-option.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark-path,
+.mat-mdc-chip.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark-path {
+  stroke: var(--font-on-bg) !important;
+  stroke-width: 2px !important;
 }
 
 /* Material Button Theme Overrides */

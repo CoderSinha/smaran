@@ -7,7 +7,12 @@ import type { List } from '../../../models/list.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDialog } from '../add-dialog/add-dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { convertISOToddMMyyyy, convertddMMyyyyToISO, formatDateInput } from '../../../utils';
+import {
+  convertISOToddMMyyyy,
+  convertddMMyyyyToISO,
+  formatDateInput,
+  isFutureOrToday,
+} from '../../../utils';
 import { futureDateValidator } from '../../../validators/form.validator';
 import { DIALOG_CONFIG } from '../../../config/dialog.config';
 
@@ -118,6 +123,16 @@ export class Todo implements OnInit {
       id: Number(event.source.id),
       isChecked: event.checked,
     });
+  }
+
+  // ===== UTILITY METHODS =====
+  isOverdue(): boolean {
+    const endDateString = this.item().endDate;
+    if (this.item().category !== 'active' || !endDateString) {
+      return false;
+    }
+
+    return !isFutureOrToday(endDateString);
   }
 
   // ===== ACTIONS =====
