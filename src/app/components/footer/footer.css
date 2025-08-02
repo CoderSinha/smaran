@@ -1,19 +1,10 @@
 .footer-container {
-  display: flex;
-  align-items: center;
-  width: var(--full-viewport-width);
   background-color: var(--bg-color);
   margin: 0;
-  box-sizing: border-box;
-  position: fixed;
-  left: var(--center-position);
-  right: var(--center-position);
-  transform: translateX(-50%);
   bottom: 0;
   text-align: center;
   padding: var(--header-footer-padding) var(--content-padding);
   font-size: var(--footer-font-size);
-  z-index: var(--fixed-z-index);
   height: var(--header-footer-height);
 }
 .footer {

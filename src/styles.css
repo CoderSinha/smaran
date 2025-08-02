@@ -76,6 +76,10 @@
   --dialog-max-width: 500px;
   --dialog-min-height: 200px;
   --dialog-content-multiplier: 4;
+
+  /* Cookie specific values */
+  --cookie-button-min-width: 80px;
+  --cookie-icon-size: var(--theme-toggle-icon-size);
 }
 
 /* Dark theme colors */
@@ -254,6 +258,268 @@ body {
 .mat-mdc-chip.mdc-evolution-chip--selected .mdc-evolution-chip__checkmark-path {
   stroke: var(--font-on-bg) !important;
   stroke-width: 2px !important;
+}
+
+/* ===== CENTRALIZED UTILITY CLASSES ===== */
+
+/* Layout Utilities */
+.fixed-full-width {
+  position: fixed;
+  width: var(--full-viewport-width);
+  left: var(--center-position);
+  transform: translateX(-50%);
+  z-index: var(--fixed-z-index);
+  box-sizing: border-box;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Card/Container Utilities */
+.card {
+  background-color: var(--todo-item-bg);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+  transition: box-shadow var(--transition-duration) ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.card-padding {
+  padding: var(--header-footer-padding) var(--content-padding);
+}
+
+/* Icon Utilities */
+.icon-interactive {
+  cursor: pointer;
+  opacity: var(--icon-inactive-opacity);
+  transition: all var(--transition-duration) ease;
+}
+
+.icon-interactive:hover {
+  opacity: 1;
+}
+
+.icon-primary:hover {
+  color: var(--todo-color-primary) !important;
+}
+
+.icon-danger:hover {
+  color: var(--icon-danger-color) !important;
+}
+
+.icon-size-standard {
+  font-size: var(--cookie-icon-size);
+  width: var(--cookie-icon-size);
+  height: var(--cookie-icon-size);
+}
+
+/* Input Utilities */
+.input-seamless {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: var(--todo-spacing-sm);
+}
+
+.input-seamless:focus {
+  background: transparent;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Typography Utilities */
+.text-small {
+  font-size: var(--small-font-scale);
+}
+
+.text-tight {
+  line-height: var(--tight-line-height);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-error {
+  color: var(--todo-color-error);
+}
+
+/* Hover Effects */
+.hover-bg {
+  cursor: pointer;
+  padding: var(--todo-spacing-sm);
+  border-radius: var(--todo-spacing-sm);
+  transition: background-color var(--transition-duration) ease;
+}
+
+.hover-bg:hover {
+  background-color: var(--todo-color-hover-bg);
+}
+
+/* Spacing Utilities */
+.gap-sm {
+  gap: var(--todo-spacing-sm);
+}
+
+.gap-md {
+  gap: var(--todo-spacing-md);
+}
+
+.gap-standard {
+  gap: var(--logo-margin-right);
+}
+
+.margin-bottom-standard {
+  margin-bottom: var(--logo-margin-right);
+}
+
+/* Title/Heading Utilities */
+.title-reset {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 var(--todo-spacing-sm) 0;
+  line-height: var(--tight-line-height);
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.description-text {
+  font-size: inherit;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--tight-line-height);
+}
+
+/* Flex Utilities */
+.flex-1 {
+  flex: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.align-flex-start {
+  align-items: flex-start;
+}
+
+/* Width Utilities */
+.w-full {
+  width: 100%;
+}
+
+/* Display Utilities */
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+/* Position Utilities */
+.relative {
+  position: relative;
+}
+
+/* Responsive Utilities */
+@media (max-width: 600px) {
+  .mobile-column {
+    flex-direction: column;
+  }
+
+  .mobile-stretch {
+    justify-content: stretch;
+  }
+
+  .mobile-gap-md {
+    gap: var(--todo-spacing-md);
+  }
+
+  .mobile-gap-sm {
+    gap: var(--todo-spacing-sm);
+  }
+}
+
+/* Centralized Button System */
+/* Primary buttons - for main actions like Save, Accept */
+.btn-primary {
+  background-color: var(--bg-color) !important;
+  color: var(--font-on-bg) !important;
+  border: none !important;
+  transition: all var(--transition-duration) ease !important;
+}
+
+.btn-primary:hover {
+  opacity: 0.9 !important;
+}
+
+/* Secondary buttons - for cancel, decline actions */
+.btn-secondary {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border: var(--border-width) solid var(--border-color) !important;
+  transition: all var(--transition-duration) ease !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--todo-color-hover-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+}
+
+/* Button sizing utilities */
+.btn-min-width {
+  min-width: var(--cookie-button-min-width);
+}
+
+.btn-flex {
+  flex: 1;
+}
+
+/* Floating action button */
+.btn-fab {
+  background-color: var(--bg-color) !important;
+  color: var(--font-on-bg) !important;
+  z-index: var(--add-button-z-index);
+}
+
+.btn-fab mat-icon {
+  color: var(--font-on-bg);
 }
 
 /* Material Button Theme Overrides */

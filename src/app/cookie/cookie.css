@@ -1,0 +1,41 @@
+.cookie-banner {
+  bottom: var(--header-footer-height);
+  background-color: var(--todo-item-bg);
+  border-top: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-hover);
+  z-index: calc(var(--fixed-z-index) - 1);
+}
+
+.cookie-text {
+  align-items: flex-start;
+}
+
+.cookie-icon {
+  color: var(--bg-color);
+  flex-shrink: 0;
+  margin-top: calc((1em - var(--cookie-icon-size)) / 2);
+}
+
+.cookie-message {
+  flex: 1;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .cookie-content {
+    gap: var(--todo-spacing-md);
+  }
+
+  .cookie-text {
+    flex-direction: column;
+    gap: var(--todo-spacing-sm);
+  }
+
+  .cookie-actions {
+    justify-content: stretch;
+  }
+
+  .btn-min-width {
+    flex: 1;
+  }
+}

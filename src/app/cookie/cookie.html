@@ -1,0 +1,32 @@
+@if (showBanner()) {
+  <div class="cookie-banner fixed-full-width card-padding">
+    <div class="cookie-content flex-column gap-standard">
+      <div class="cookie-text flex-center gap-standard">
+        <mat-icon class="cookie-icon icon-size-standard flex-center">cookie</mat-icon>
+        <div class="cookie-message">
+          <h3 class="title-reset">We use cookies</h3>
+          <p class="description-text">
+            This app works with localStorage to save your todos and preferences. Without consent,
+            you can still use the app but your data will be lost when the session ends.
+          </p>
+        </div>
+      </div>
+      <div class="cookie-actions flex-end gap-md">
+        <button
+          mat-raised-button
+          class="btn-primary btn-min-width"
+          (click)="acceptCookies()"
+        >
+          Accept
+        </button>
+        <button
+          mat-button
+          class="btn-secondary btn-min-width"
+          (click)="declineCookies()"
+        >
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+}

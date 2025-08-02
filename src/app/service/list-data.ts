@@ -7,6 +7,7 @@ import { List, Category } from '../../models/models';
 export class ListData {
   // ===== CONSTANTS =====
   private readonly STORAGE_KEY = 'smaran-todo-list';
+  private readonly COOKIE_CONSENT_KEY = 'smaran-cookie-consent';
 
   // ===== STATE =====
   private list = signal<List[]>(this.loadFromLocalStorage());
@@ -48,8 +49,24 @@ export class ListData {
     return date.toISOString();
   }
 
+  // ===== COOKIE CONSENT METHODS =====
+  private hasCookieConsent(): boolean {
+    try {
+      const consent = localStorage.getItem(this.COOKIE_CONSENT_KEY);
+      return consent === 'true';
+    } catch (error) {
+      console.error('Error checking cookie consent:', error);
+      return false;
+    }
+  }
+
   // ===== LOCALSTORAGE METHODS =====
   private loadFromLocalStorage(): List[] {
+    // Only load from localStorage if user has given consent
+    if (!this.hasCookieConsent()) {
+      return this.getDefaultData();
+    }
+
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       if (stored) {
@@ -64,6 +81,11 @@ export class ListData {
   }
 
   private saveToLocalStorage(list: List[]): void {
+    // Only save to localStorage if user has given consent
+    if (!this.hasCookieConsent()) {
+      return;
+    }
+
     try {
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
     } catch (error) {

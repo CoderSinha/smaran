@@ -3,17 +3,5 @@
 }
 
 .chips-button-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: var(--chips-button-margin);
-}
-
-.add-button {
-  z-index: var(--add-button-z-index);
-  background-color: var(--bg-color) !important;
-}
-
-.add-button mat-icon {
-  color: var(--font-on-bg);
 }

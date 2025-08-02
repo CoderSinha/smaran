@@ -1,12 +1,12 @@
 <div class="todo-list-container">
-  <div class="chips-button-row">
+  <div class="chips-button-row flex-between">
     <app-chips
       [selectedCategory]="category()"
       (chipSelectionChange)="onCategoryChange($event)"
     ></app-chips>
     <button
       matFab
-      class="add-button"
+      class="btn-fab"
       (click)="openDialog()"
     >
       <mat-icon>add</mat-icon>
