@@ -44,6 +44,7 @@
 /* ===== CHECKBOX STYLING (RADIO BUTTON APPEARANCE) ===== */
 .todo-checkbox ::ng-deep .mdc-checkbox__background {
   border-radius: var(--radio-border-radius) !important;
+  border-color: var(--text-primary) !important;
 }
 
 .todo-checkbox ::ng-deep .mdc-checkbox__checkmark {
@@ -96,6 +97,12 @@
 
 .todo-date:hover {
   background-color: var(--todo-color-hover-bg);
+}
+
+.todo-date.overdue {
+  color: var(--todo-color-error) !important;
+  font-weight: 500;
+  opacity: 1 !important;
 }
 
 /* ===== INPUT FIELDS (INVISIBLE/SEAMLESS) ===== */

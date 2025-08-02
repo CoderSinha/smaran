@@ -50,10 +50,14 @@
       </div>
       <div
         class="todo-date"
+        [class.overdue]="isOverdue()"
         (click)="startInlineEditing()"
       >
         @if (item().category === 'active') {
           Complete by: {{ item().endDate | date: 'dd/MM/yyyy' }}
+          @if (isOverdue()) {
+            (Overdue)
+          }
         } @else {
           Completed on: {{ item().completedDate | date: 'dd/MM/yyyy' }}
         }
