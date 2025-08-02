@@ -1,4 +1,4 @@
-<div class="todo-item">
+<div class="todo-item card card-padding flex-center gap-standard margin-bottom-standard">
   <mat-checkbox
     class="todo-checkbox"
     [id]="item().id.toString()"
@@ -7,14 +7,14 @@
   ></mat-checkbox>
 
   <div
-    class="todo-content"
+    class="todo-content flex-column gap-sm"
     [formGroup]="form"
   >
     @if (isInEditMode()) {
-      <div class="edit-fields">
+      <div class="edit-fields flex-column gap-md">
         <input
           matInput
-          class="todo-text-input"
+          class="todo-text-input input-seamless text-tight"
           formControlName="content"
           (keydown)="onKeyDown($event)"
           (blur)="saveEdit()"
@@ -23,7 +23,7 @@
         />
         <input
           matInput
-          class="todo-date-input"
+          class="todo-date-input input-seamless text-tight text-small"
           formControlName="endDate"
           (input)="onDateInput($event)"
           (keydown)="onKeyDown($event)"
@@ -32,7 +32,7 @@
         />
       </div>
       @if (form.get('endDate')?.errors) {
-        <div class="error-message">
+        <div class="error-message text-small text-error">
           @if (form.get('endDate')?.errors?.['invalidFormat']) {
             Please use DD/MM/YYYY format
           }
@@ -43,13 +43,13 @@
       }
     } @else {
       <div
-        class="todo-text"
+        class="todo-text hover-bg text-tight"
         (click)="startInlineEditing()"
       >
         {{ item().content }}
       </div>
       <div
-        class="todo-date"
+        class="todo-date hover-bg text-small text-secondary text-tight"
         [class.overdue]="isOverdue()"
         (click)="startInlineEditing()"
       >
@@ -65,18 +65,18 @@
     }
   </div>
 
-  <div class="todo-actions">
+  <div class="todo-actions flex-center gap-md">
     @if (!isInEditMode()) {
       @if (item().category === 'active') {
         <mat-icon
-          class="todo-icon edit-icon"
+          class="todo-icon icon-interactive icon-primary"
           fontIcon="edit"
           (click)="openDialog()"
           title="Edit"
         ></mat-icon>
       }
       <mat-icon
-        class="todo-icon delete-icon"
+        class="todo-icon icon-interactive icon-danger"
         fontIcon="delete"
         (click)="onCheckBoxDeleted()"
         title="Delete"

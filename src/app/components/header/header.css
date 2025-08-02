@@ -1,31 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
 .header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: var(--full-viewport-width);
   background-color: var(--bg-color);
   margin: 0;
-  box-sizing: border-box;
-  position: fixed;
-  left: var(--center-position);
-  right: var(--center-position);
-  transform: translateX(-50%);
   top: 0;
   padding: var(--header-footer-padding) var(--content-padding);
-  z-index: var(--fixed-z-index);
   height: var(--header-footer-height);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
 }
 
 .logo {

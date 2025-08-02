@@ -1,20 +1,6 @@
 /* ===== LAYOUT COMPONENTS ===== */
 .todo-item {
-  display: flex;
-  align-items: center;
-  gap: var(--logo-margin-right);
-  padding: var(--header-footer-padding) var(--content-padding);
-  background-color: var(--todo-item-bg);
   color: var(--text-primary);
-  border: var(--border-width) solid var(--border-color);
-  border-radius: var(--border-radius);
-  margin-bottom: var(--logo-margin-right);
-  box-shadow: var(--shadow-default);
-  transition: box-shadow var(--transition-duration) ease;
-}
-
-.todo-item:hover {
-  box-shadow: var(--shadow-hover);
 }
 
 .todo-checkbox {
@@ -23,22 +9,10 @@
 
 .todo-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--content-gap);
 }
 
 .edit-fields {
-  display: flex;
-  flex-direction: column;
-  gap: var(--todo-spacing-md);
   width: 100%;
-}
-
-.todo-actions {
-  display: flex;
-  gap: var(--todo-spacing-md);
-  align-items: center;
 }
 
 /* ===== CHECKBOX STYLING (RADIO BUTTON APPEARANCE) ===== */
@@ -74,29 +48,10 @@
 /* ===== INTERACTIVE ELEMENTS ===== */
 .todo-text {
   font-size: inherit;
-  line-height: var(--tight-line-height);
-  cursor: pointer;
-  padding: var(--todo-spacing-sm);
-  border-radius: var(--todo-spacing-sm);
-  transition: background-color var(--transition-duration) ease;
-}
-
-.todo-text:hover {
-  background-color: var(--todo-color-hover-bg);
 }
 
 .todo-date {
-  font-size: var(--small-font-scale);
-  color: var(--text-secondary);
   opacity: var(--icon-inactive-opacity);
-  cursor: pointer;
-  padding: var(--todo-spacing-sm);
-  border-radius: var(--todo-spacing-sm);
-  transition: background-color var(--transition-duration) ease;
-}
-
-.todo-date:hover {
-  background-color: var(--todo-color-hover-bg);
 }
 
 .todo-date.overdue {
@@ -108,51 +63,12 @@
 /* ===== INPUT FIELDS (INVISIBLE/SEAMLESS) ===== */
 .todo-text-input {
   font-size: inherit;
-  line-height: var(--tight-line-height);
   width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: inherit;
-  color: inherit;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: var(--todo-spacing-sm);
-}
-
-.todo-text-input:focus {
-  background: transparent;
-  outline: none;
-  border: none;
-  box-shadow: none;
 }
 
 .todo-date-input {
-  font-size: var(--small-font-scale);
-  line-height: var(--tight-line-height);
   width: var(--todo-date-input-width);
   font-weight: normal;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: inherit;
-  color: inherit;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: var(--todo-spacing-sm);
-}
-
-.todo-date-input:focus {
-  background: transparent;
-  outline: none;
-  border: none;
-  box-shadow: none;
 }
 
 .todo-date-input::placeholder {
@@ -162,28 +78,14 @@
 
 /* ===== STATES & FEEDBACK ===== */
 .error-message {
-  font-size: var(--small-font-scale);
-  color: var(--todo-color-error);
   margin-top: var(--todo-spacing-sm);
 }
 
 /* ===== ICONS ===== */
 .todo-icon {
   display: none;
-  cursor: pointer;
-  color: inherit;
-  opacity: var(--icon-inactive-opacity);
-  transition: all var(--transition-duration) ease;
 }
 
 .todo-item:hover .todo-icon {
   display: block;
-}
-
-.edit-icon:hover {
-  color: var(--todo-color-primary) !important;
-}
-
-.delete-icon:hover {
-  color: var(--icon-danger-color) !important;
 }
