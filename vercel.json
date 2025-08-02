@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/smaran",
+  "outputDirectory": "dist/smaran/browser",
   "routes": [
     {
       "src": "/(.*)",
