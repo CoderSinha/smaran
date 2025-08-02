@@ -1,0 +1,30 @@
+/* Chips responsive layout */
+mat-chip-listbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+mat-chip-option {
+  transition: all var(--transition-duration) ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+  mat-chip-listbox {
+    justify-content: center;
+    gap: var(--space-xs);
+  }
+
+  mat-chip-option {
+    font-size: var(--text-sm);
+    min-height: 32px;
+  }
+}
+
+@media (min-width: 576px) {
+  mat-chip-listbox {
+    justify-content: flex-start;
+  }
+}

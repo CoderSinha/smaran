@@ -18,6 +18,7 @@ The app emphasizes user experience with smooth animations, intuitive interaction
 - **Date Validation** - Built-in date picker with validation preventing past due dates
 - **Reactive State** - Real-time UI updates using Angular's modern signals API for optimal performance
 - **Dynamic Theme System** - Seamless light/dark mode switching with system preference detection
+- **Responsive Design** - Mobile-first design that adapts beautifully across all device sizes
 
 ## Tech Stack & Modern Features
 
@@ -25,7 +26,7 @@ The app emphasizes user experience with smooth animations, intuitive interaction
 - **Angular Material** - UI components (Dialog, Button, Checkbox, Chips, Form Fields, Date Picker)
 - **Angular Reactive Forms** - Form validation and data binding with FormBuilder
 - **TypeScript** - Type-safe development with interfaces and enums
-- **SCSS** - Custom styling and Material Design theming
+- **CSS/SCSS** - Custom styling and Material Design theming
 - **Standalone Components** - Modern Angular architecture without NgModules
 
 This project showcases Angular's latest **signals** feature for reactive state management, using `signal()`, `computed()`, and `update()` methods for efficient component state handling without traditional observables.
