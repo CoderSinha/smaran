@@ -9,6 +9,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "branches": ["main"]
+  ]
 }
