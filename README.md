@@ -4,7 +4,7 @@ Smaran is a modern todo application that demonstrates the power of Angular's lat
 
 ## Live Demo
 
-🚀 [smaran.vercel.app](https://smaran-demo.vercel.app)
+🚀 <a href="https://smaran-demo.vercel.app" target="_blank">smaran-demo.vercel.app</a>
 
 ## About the Application
 
