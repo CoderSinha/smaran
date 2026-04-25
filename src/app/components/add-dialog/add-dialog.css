@@ -1,15 +1,12 @@
 mat-dialog-content {
-  /* Center the content area */
   margin: var(--content-padding) auto;
   padding: var(--content-padding);
-
-  /* Take screen width with appropriate margins using central values */
   width: calc(100vw - calc(var(--content-padding) * var(--dialog-content-multiplier)));
   max-width: var(--dialog-max-width);
+  overflow-y: hidden;
 }
 
 mat-dialog-content form {
-  /* Center the form and make it take full width */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +16,13 @@ mat-dialog-content form {
 }
 
 mat-dialog-content mat-form-field {
-  /* Make input fields take full width and center them */
   width: 100%;
   text-align: center;
+  padding-top: var(--dialog-error-spacing);
+  padding-bottom: var(--dialog-error-spacing);
+}
+
+::ng-deep mat-dialog-content .mat-mdc-form-field-error {
+  text-align: left;
+  font-size: var(--dialog-error-font-size);
 }

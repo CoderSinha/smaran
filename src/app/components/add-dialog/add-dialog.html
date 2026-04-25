@@ -1,30 +1,36 @@
 <h1 mat-dialog-title>Add Entry</h1>
 <mat-dialog-content class="mat-typography mat-dialog-content">
-  <form [formGroup]="form">
-    <mat-form-field appearance="outline">
-      <mat-label>Task Content</mat-label>
-      <input
-        matInput
-        formControlName="content"
-      />
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Task Content</mat-label>
+    <input
+      matInput
+      [formField]="entryForm.content"
+    />
+    @if (entryForm.content().touched() && entryForm.content().errors().length) {
+      <mat-error>Task content is required</mat-error>
+    }
+  </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>End Date</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        [min]="minDate"
-        formControlName="endDate"
-        readonly
-      />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </form>
+  <mat-form-field appearance="outline">
+    <mat-label>End Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [formField]="entryForm.endDate"
+      readonly
+      (click)="picker.open()"
+    />
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    @if (entryForm.endDate().touched() && entryForm.endDate().errors().length) {
+      <mat-error>
+        {{ entryForm.endDate().errors()[0].message ?? 'End date is required' }}
+      </mat-error>
+    }
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button

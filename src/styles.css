@@ -76,6 +76,8 @@
   --dialog-max-width: 500px;
   --dialog-min-height: 200px;
   --dialog-content-multiplier: 4;
+  --dialog-error-font-size: 0.8rem;
+  --dialog-error-spacing: 5px;
 
   /* Cookie specific values */
   --cookie-button-min-width: 80px;

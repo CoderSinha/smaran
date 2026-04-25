@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -15,6 +15,13 @@ import {
 } from '@angular/material/core';
 import { List } from '../../../models/list.interface';
 import { Category } from '../../../models/category.type';
+import { form, FormField, required } from '@angular/forms/signals';
+import { notInPast } from '../../validators/date-not-in-past.validators';
+
+interface FormModel {
+  content: string;
+  endDate: Date | null;
+}
 
 @Component({
   selector: 'app-add-dialog',
@@ -26,6 +33,7 @@ import { Category } from '../../../models/category.type';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    FormField,
   ],
   providers: [
     { provide: DateAdapter, useClass: NativeDateAdapter },
@@ -38,25 +46,29 @@ import { Category } from '../../../models/category.type';
 export class AddDialog {
   // ===== SERVICES =====
   dialogRef = inject(MatDialogRef<AddDialog>);
-  private formBuilder = inject(FormBuilder);
 
   // ===== PROPERTIES =====
   data = inject(MAT_DIALOG_DATA);
   isEditMode = this.data.mode === 'edit';
-  minDate = new Date(); // Set minimum date to today (no past dates allowed)
+  // minDate = new Date();
 
-  // ===== STATE =====
-  form = this.formBuilder.group({
-    content: [this.initialData('content'), Validators.required],
-    endDate: [this.initialData('endDate'), Validators.required],
+  // ===== FORM MODEL =====
+  entryModel = signal<FormModel>({
+    content: this.isEditMode ? this.data.item.content : '',
+    endDate: this.isEditMode ? new Date(this.data.item.endDate) : new Date(),
+  });
+
+  entryForm = form(this.entryModel, (schemaPath) => {
+    required(schemaPath.content);
+    required(schemaPath.endDate);
+    notInPast(schemaPath.endDate);
   });
 
   // ===== ACTIONS =====
   onSave(): void {
-    if (this.form.valid) {
-      // Convert to machine-workable ISO format
-      const endDate = this.form.value.endDate;
-      const content = this.form.value.content;
+    if (this.entryForm().valid()) {
+      const endDate = this.entryForm().value().endDate;
+      const content = this.entryForm().value().content;
       if (endDate && content) {
         const formData: List = {
           content,
@@ -67,19 +79,6 @@ export class AddDialog {
         };
         this.dialogRef.close(formData);
       }
-    } else {
-      console.log('Form is invalid');
-    }
-  }
-
-  // ===== PRIVATE HELPERS =====
-  private initialData(propertyName: string) {
-    if (propertyName === 'content') {
-      return this.isEditMode ? this.data.item.content : '';
-    }
-
-    if (propertyName === 'endDate') {
-      return this.isEditMode ? new Date(this.data.item.endDate) : (null as Date | null);
     }
   }
 }
