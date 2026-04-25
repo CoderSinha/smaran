@@ -2,6 +2,10 @@
 
 Smaran is a modern todo application that demonstrates the power of Angular's latest features combined with Material Design. Built as a showcase of contemporary web development practices, this app provides an intuitive interface for task management while highlighting cutting-edge Angular capabilities.
 
+## Live Demo
+
+🚀 [smaran.vercel.app](https://smaran.vercel.app)
+
 ## About the Application
 
 This todo app goes beyond basic task management by implementing Angular's newest features and best practices. It serves as both a functional productivity tool and a demonstration of modern Angular development patterns. The application features a clean, responsive interface that adapts seamlessly across devices, making task organization effortless whether you're on desktop or mobile.
@@ -22,14 +26,14 @@ The app emphasizes user experience with smooth animations, intuitive interaction
 
 ## Tech Stack & Modern Features
 
-- **Angular 20** - Core framework with signals, computed, and inject APIs
+- **Angular 21** - Core framework with signals, computed, and inject APIs
 - **Angular Material** - UI components (Dialog, Button, Checkbox, Chips, Form Fields, Date Picker)
-- **Angular Reactive Forms** - Form validation and data binding with FormBuilder
+- **@angular/forms/signals** - Signals-based form API with declarative validation
 - **TypeScript** - Type-safe development with interfaces and enums
 - **CSS/SCSS** - Custom styling and Material Design theming
 - **Standalone Components** - Modern Angular architecture without NgModules
 
-This project showcases Angular's latest **signals** feature for reactive state management, using `signal()`, `computed()`, and `update()` methods for efficient component state handling without traditional observables.
+This project showcases Angular's latest **signals** feature for reactive state management, using `signal()`, `computed()`, and `update()` methods for efficient component state handling. It also uses the new **`@angular/forms/signals`** API for declarative, type-safe form validation without traditional FormBuilder or observables.
 
 ## License
 
